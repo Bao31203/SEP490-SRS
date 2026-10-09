@@ -1,5 +1,18 @@
 # SRS v5.8 (bản đã sửa 08/10/2026): danh sách cần sửa tiếp
 
+## Trạng thái (09/10/2026)
+File đã sửa: `Report_3_SRS_v5.8_sua_lan2_TrackChanges.docx` (Track Changes, tác giả "Claude") và `Report_3_SRS_v5.8_sua_lan2_Clean.docx`.
+
+- **Đã sửa:** A1–A14, B1–B9, C (NFR có số đo, thêm NFR-14, NFR-15), D1, D2 (9 nhóm entity ở 3.1), D4, E2–E5.
+  - A12: E35 ReceiptAllocation đã có sẵn, chỉ bổ sung mã tham chiếu cho E34.
+- **Rà thêm 55 UC còn lại theo checklist:** sửa thêm 77 lỗi (S-01…S-36 cho UC01–UC41; T-01…T-40 cho UC42–UC77), thêm MSG70–MSG72.
+- **Chưa sửa:**
+  - E1: chữ "(đề xuất)" ở Priority, chờ nhóm duyệt theo CX-UC-02.
+  - E6: các chỗ "chốt ở SDS" còn lại là chi tiết kỹ thuật.
+  - F: các đề xuất bổ sung, do nhóm quyết.
+  - D2b, D3, D5 (sơ đồ): đang tạm dừng theo yêu cầu. Hình trong file vẫn là bản gốc; mục 3.1 vẫn ghi "95 quan hệ".
+  - Bản nháp đã vẽ (chưa chèn) nằm ở thư mục `So_do_nhap_chua_chen/`.
+
 ## Nguồn và phạm vi
 - Tổng hợp từ lần so sánh với V4_1 và các mục còn tồn của vòng 2–3. Mọi mục đã được đối chiếu lại với văn bản.
 - File áp dụng: `Report_3_SRS_v5.8_da_sua_Clean.docx`, hoặc bản TrackChanges sau khi chấp nhận hết.
