@@ -67,7 +67,8 @@ NFR hiện có 13 mục, không có cột nghiệm thu. NFR-11 "còn mở", NFR-
 |---|---|---|---|
 | D1 | 🟡 | N13 | Sắp lại thứ tự các dòng bảng V.3.2. |
 | D2 | 🟡 | F-16 | Mục ERD ghi "9 nhóm": đối chiếu tên nhóm trong sơ đồ, sửa số hoặc liệt kê tên nhóm. |
-| D3 | 🟠 | Sơ đồ | Cập nhật theo nội dung đã sửa: STD-ORDER (thêm Đã thu → Đã hủy, Đã xác nhận → Đã thu); STD của SaleAdjustment (Nháp → Chờ duyệt → Đã duyệt/Từ chối); UCD có UC44 5c, UC42 3c; BF-03 và BF-04 nếu có nhánh mới. |
+| D2b | 🟠 | ERD (Hình 3.1-1) | Lần sửa 08/10 thêm 6 khóa ngoại vào mục 3.2 nhưng sơ đồ chưa vẽ: E19 CultivationLogEntry → E07 FarmingZone (zone_id; cycle_id thành tùy chọn); E20 WaterMeasurement → E20 (corrected_from_measurement_id, tự tham chiếu); E22 Customer → E22 (merged_into_customer_id, tự tham chiếu); E36 CustomerCredit → E34 CustomerReceipt (source_receipt_id); E42 PayRuleVersion → E03 Employee (employee_id); E43 PayLine → E44 LaborSettlement (settlement_id). Bội số đổi: E16 → E13 (planned_seed_type_id) và E19 → E16 (cycle_id) thành 0..1. Vẽ thêm các quan hệ này và sửa câu "95 quan hệ" ở mục 3.1 (thành 101 nếu sơ đồ đếm theo khóa ngoại). Số entity vẫn 52. |
+| D3 | 🟠 | Sơ đồ | Cập nhật theo nội dung đã sửa: STD-ORDER (thêm Đã thu → Đã hủy, Đã xác nhận → Đã thu); STD của SaleAdjustment (Nháp → Đã duyệt / Từ chối, nguồn UC53 và UC39); UCD có UC44 5c, UC42 3c; BF-03 và BF-04 nếu có nhánh mới. |
 | D4 | 🟡 | MSG01 | Thêm MSG01 vào dòng "Thông báo liên quan" của các SCR có trường bắt buộc mà chưa liệt kê. |
 | D5 | 🟡 | Include có điều kiện | Ghi chú UML cho các quan hệ include chỉ chạy khi thỏa điều kiện (ví dụ UC45 → UC32 "nếu lô chưa có bản công bố hiện hành"). |
 
