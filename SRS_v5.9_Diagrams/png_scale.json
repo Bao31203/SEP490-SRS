@@ -1,0 +1,182 @@
+{
+ "CTX": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-OVR": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-ACC": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-ORG": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-FARM": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-SEED": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-CULT": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-ENV": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-HARV": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-TRC": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-SAL": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-PAY": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-CLM": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-LAB": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-RPT": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-NOTI": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCD-ADM": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCF-TRC-01": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCF-SAL-06": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCF-CLM-02": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "UCF-CLM-04": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SF-01": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SF-02": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SF-03": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SF-04": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SF-05": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SF-06": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SF-07": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "STD-ORDER": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "STD-PUB": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "STD-CLAIM": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "STD-LABOR": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "STD-ACCOUNT": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "STD-RETURN": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "STD-ADJ": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "ACTOR-GEN": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ }
+}

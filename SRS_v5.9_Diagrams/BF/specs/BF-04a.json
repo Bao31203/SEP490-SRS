@@ -1,0 +1,341 @@
+{
+ "id": "BF-04a",
+ "style": "uml",
+ "heading": "2.4 Cân, giao hàng và thanh toán — Quản lý khu phụ trách đơn (BF-04a)",
+ "title": "Swimlane Diagram — BF-04a: Cân, giao hàng và thanh toán (Quản lý khu phụ trách đơn)",
+ "trigger": "Tàu chở hàng của đơn cập cảng và thương lái đã ra cảng.",
+ "end_condition": "Đơn ở trạng thái Đã chốt bán; thương lái xác nhận số đã trả và số còn nợ.",
+ "lanes": [
+  {
+   "id": "qlk",
+   "label": "Quản lý khu",
+   "kind": "actor"
+  },
+  {
+   "id": "tl",
+   "label": "Thương lái",
+   "kind": "actor"
+  },
+  {
+   "id": "kt",
+   "label": "Kế toán",
+   "kind": "actor"
+  },
+  {
+   "id": "sys",
+   "label": "Hệ thống OMTS",
+   "kind": "system"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "s",
+   "kind": "start",
+   "lane": "qlk",
+   "col": 0
+  },
+  {
+   "id": "can",
+   "lane": "qlk",
+   "col": 0,
+   "label": "Cân chung toàn bộ hàng cùng thương lái",
+   "row": 1
+  },
+  {
+   "id": "xncan",
+   "lane": "tl",
+   "col": 0,
+   "label": "Xác nhận số cân"
+  },
+  {
+   "id": "gia",
+   "lane": "qlk",
+   "col": 1,
+   "label": "Thống nhất giá thị trường với thương lái"
+  },
+  {
+   "id": "luucan",
+   "lane": "sys",
+   "col": 1,
+   "label": "Lưu phiếu cân, giá; gửi thương lái qua Zalo OA / SMS"
+  },
+  {
+   "id": "giao",
+   "lane": "qlk",
+   "col": 6,
+   "label": "Bàn giao hàng tại cảng"
+  },
+  {
+   "id": "tinh",
+   "lane": "sys",
+   "col": 6,
+   "label": "Trạng thái = Đã bàn giao; tính kg × giá, làm tròn lên nghìn"
+  },
+  {
+   "id": "xntien",
+   "lane": "qlk",
+   "col": 7,
+   "label": "Xác nhận số tiền cuối"
+  },
+  {
+   "id": "bn",
+   "lane": "sys",
+   "col": 7,
+   "label": "Đơn = Đã chốt bán; tạo biên nhận, VietQR; gửi thương lái, báo Chủ HTX"
+  },
+  {
+   "id": "tlxn",
+   "lane": "tl",
+   "col": 8,
+   "label": "Xem, xác nhận số tiền"
+  },
+  {
+   "id": "trangay",
+   "kind": "decision",
+   "lane": "tl",
+   "col": 9,
+   "label": "Trả tiền ngay?"
+  },
+  {
+   "id": "tra",
+   "lane": "tl",
+   "col": 10,
+   "label": "Trả tiền mặt hoặc chuyển khoản"
+  },
+  {
+   "id": "ghitien",
+   "lane": "kt",
+   "col": 10,
+   "label": "Ghi tiền thực nhận, phân bổ vào giao dịch"
+  },
+  {
+   "id": "guibn",
+   "lane": "sys",
+   "col": 11,
+   "label": "Cập nhật công nợ; gửi phiếu thu qua Zalo OA / SMS"
+  },
+  {
+   "id": "tlxn2",
+   "lane": "tl",
+   "col": 12,
+   "label": "Xem, xác nhận số đã trả, số còn nợ"
+  },
+  {
+   "id": "e",
+   "kind": "end",
+   "lane": "tl",
+   "col": 12,
+   "row": 1
+  },
+  {
+   "id": "mang",
+   "lane": "qlk",
+   "col": 2,
+   "kind": "decision",
+   "label": "Cảng có mạng?",
+   "size": [
+    130,
+    90
+   ]
+  },
+  {
+   "id": "ra",
+   "lane": "qlk",
+   "col": 3,
+   "label": "Rà hồ sơ truy xuất của lô"
+  },
+  {
+   "id": "dat",
+   "lane": "qlk",
+   "col": 4,
+   "kind": "decision",
+   "label": "Hồ sơ đạt?",
+   "size": [
+    130,
+    90
+   ]
+  },
+  {
+   "id": "dc",
+   "lane": "qlk",
+   "col": 4,
+   "row": 1,
+   "label": "Đính chính dữ liệu nguồn"
+  },
+  {
+   "id": "cb",
+   "lane": "qlk",
+   "col": 5,
+   "label": "Công bố hồ sơ, QR của lô"
+  },
+  {
+   "id": "luucb",
+   "lane": "sys",
+   "col": 5,
+   "label": "Lưu bản công bố; QR trỏ bản hiện hành"
+  },
+  {
+   "id": "off",
+   "lane": "qlk",
+   "col": 3,
+   "row": 2,
+   "label": "Bàn giao trên thiết bị; rà, công bố QR khi có mạng"
+  }
+ ],
+ "edges": [
+  {
+   "from": "s",
+   "to": "can"
+  },
+  {
+   "from": "can",
+   "to": "xncan"
+  },
+  {
+   "from": "xncan",
+   "to": "gia"
+  },
+  {
+   "from": "gia",
+   "to": "luucan"
+  },
+  {
+   "from": "giao",
+   "to": "tinh"
+  },
+  {
+   "from": "tinh",
+   "to": "xntien"
+  },
+  {
+   "from": "xntien",
+   "to": "bn"
+  },
+  {
+   "from": "bn",
+   "to": "tlxn"
+  },
+  {
+   "from": "tlxn",
+   "to": "trangay"
+  },
+  {
+   "from": "trangay",
+   "to": "tra",
+   "label": "Có"
+  },
+  {
+   "from": "tra",
+   "to": "ghitien"
+  },
+  {
+   "from": "ghitien",
+   "to": "guibn",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "@guibn",
+     "@ghitien"
+    ]
+   ]
+  },
+  {
+   "from": "trangay",
+   "to": "guibn",
+   "label": "Chưa",
+   "exit": "bottom",
+   "entry": "left",
+   "via": [
+    [
+     "@trangay",
+     "@guibn"
+    ]
+   ]
+  },
+  {
+   "from": "guibn",
+   "to": "tlxn2"
+  },
+  {
+   "from": "tlxn2",
+   "to": "e",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "luucan",
+   "to": "mang"
+  },
+  {
+   "from": "mang",
+   "to": "ra",
+   "label": "Có"
+  },
+  {
+   "from": "mang",
+   "to": "off",
+   "label": "Không",
+   "exit": "bottom",
+   "entry": "left",
+   "via": [
+    [
+     "@mang",
+     "@off"
+    ]
+   ]
+  },
+  {
+   "from": "ra",
+   "to": "dat"
+  },
+  {
+   "from": "dat",
+   "to": "cb",
+   "label": "Đạt"
+  },
+  {
+   "from": "dat",
+   "to": "dc",
+   "label": "Chưa đạt",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "dc",
+   "to": "ra",
+   "exit": "left",
+   "entry": "bottom",
+   "via": [
+    [
+     "@ra",
+     "@dc"
+    ]
+   ]
+  },
+  {
+   "from": "cb",
+   "to": "luucb"
+  },
+  {
+   "from": "luucb",
+   "to": "giao"
+  },
+  {
+   "from": "off",
+   "to": "tinh",
+   "exit": "bottom",
+   "entry": "bottom",
+   "via": [
+    [
+     "@off",
+     "sys:bot1"
+    ],
+    [
+     "@tinh",
+     "sys:bot1"
+    ]
+   ]
+  }
+ ]
+}

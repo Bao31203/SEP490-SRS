@@ -1,0 +1,462 @@
+{
+ "id": "BF-03a",
+ "style": "uml",
+ "heading": "2.3 Đơn hàng và thu hoạch — Quản lý khu phụ trách đơn (BF-03a)",
+ "title": "Swimlane Diagram — BF-03a: Đơn hàng và thu hoạch (Quản lý khu phụ trách đơn)",
+ "trigger": "Thương lái gửi yêu cầu mua hàu (ứng dụng, Zalo OA hoặc gọi điện để Chủ HTX ghi thay).",
+ "end_condition": "Hàng của đơn đã về cảng và thương lái xác nhận ra cảng nhận hàng; hoặc đơn bị từ chối, bị hủy.",
+ "lanes": [
+  {
+   "id": "tl",
+   "label": "Thương lái",
+   "kind": "actor"
+  },
+  {
+   "id": "chu",
+   "label": "Chủ HTX",
+   "kind": "actor"
+  },
+  {
+   "id": "qlk",
+   "label": "Quản lý khu",
+   "kind": "actor"
+  },
+  {
+   "id": "nv",
+   "label": "Nhân viên",
+   "kind": "actor"
+  },
+  {
+   "id": "sys",
+   "label": "Hệ thống OMTS",
+   "kind": "system"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "s",
+   "kind": "start",
+   "lane": "tl",
+   "col": 0
+  },
+  {
+   "id": "ycm",
+   "lane": "tl",
+   "col": 0,
+   "label": "Tạo yêu cầu mua: sản phẩm, số kg, thời điểm",
+   "row": 1
+  },
+  {
+   "id": "luuyc",
+   "lane": "sys",
+   "col": 0,
+   "label": "Lưu yêu cầu; trạng thái = Chờ xét; báo Chủ HTX"
+  },
+  {
+   "id": "xet",
+   "kind": "decision",
+   "lane": "chu",
+   "col": 1,
+   "label": "Xử lý yêu cầu?"
+  },
+  {
+   "id": "tuchoi",
+   "lane": "sys",
+   "col": 1,
+   "label": "Trạng thái = Từ chối; gửi lý do qua Zalo OA / SMS"
+  },
+  {
+   "id": "e1",
+   "kind": "end",
+   "lane": "sys",
+   "row": 1,
+   "col": 1
+  },
+  {
+   "id": "gui",
+   "lane": "sys",
+   "col": 2,
+   "label": "Trạng thái = Chờ khách đồng ý; gửi thông tin đơn qua Zalo OA / SMS"
+  },
+  {
+   "id": "chot",
+   "kind": "decision",
+   "lane": "tl",
+   "col": 3,
+   "label": "Chốt đơn?"
+  },
+  {
+   "id": "huy",
+   "lane": "sys",
+   "col": 3,
+   "label": "Trạng thái = Đã hủy"
+  },
+  {
+   "id": "e2",
+   "kind": "end",
+   "lane": "sys",
+   "row": 1,
+   "col": 3
+  },
+  {
+   "id": "xn",
+   "lane": "sys",
+   "col": 4,
+   "label": "Trạng thái = Đã xác nhận; báo quản lý khu phụ trách"
+  },
+  {
+   "id": "kh",
+   "lane": "qlk",
+   "col": 5,
+   "label": "Lập kế hoạch thu: vùng, bè, lối, kg ước tính"
+  },
+  {
+   "id": "luukh",
+   "lane": "sys",
+   "col": 5,
+   "label": "Lưu kế hoạch; trạng thái = Đang thu hoạch"
+  },
+  {
+   "id": "thu",
+   "lane": "nv",
+   "col": 6,
+   "label": "Thu theo lối, hết lối này sang lối khác"
+  },
+  {
+   "id": "ghithu",
+   "lane": "qlk",
+   "col": 7,
+   "label": "Cuối ngày ghi lối đã thu, kg ước tính"
+  },
+  {
+   "id": "du",
+   "kind": "decision",
+   "lane": "sys",
+   "col": 7,
+   "label": "Đủ cho đơn?"
+  },
+  {
+   "id": "bt",
+   "lane": "sys",
+   "col": 8,
+   "label": "Báo Chủ HTX hàng thu thiếu",
+   "row": 1
+  },
+  {
+   "id": "gtl",
+   "lane": "chu",
+   "col": 9,
+   "label": "Gửi thương lượng hàng thu thiếu"
+  },
+  {
+   "id": "guitl",
+   "lane": "sys",
+   "col": 9,
+   "label": "Gửi thương lượng qua Zalo OA / SMS"
+  },
+  {
+   "id": "tlg",
+   "kind": "decision",
+   "lane": "tl",
+   "col": 10,
+   "label": "Thương lượng?"
+  },
+  {
+   "id": "capnhat",
+   "lane": "sys",
+   "col": 10,
+   "label": "Cập nhật lượng đơn theo số đã thu"
+  },
+  {
+   "id": "cho",
+   "lane": "nv",
+   "col": 11,
+   "label": "Chở hàng về cảng"
+  },
+  {
+   "id": "baocang",
+   "lane": "qlk",
+   "col": 12,
+   "label": "Chọn Thu xong, báo hàng về cảng"
+  },
+  {
+   "id": "bcsys",
+   "lane": "sys",
+   "col": 12,
+   "label": "Trạng thái = Đã thu; báo Chủ HTX, thương lái qua Zalo OA / SMS"
+  },
+  {
+   "id": "xnra",
+   "lane": "tl",
+   "col": 13,
+   "label": "Xác nhận ra cảng nhận hàng"
+  },
+  {
+   "id": "e",
+   "kind": "end",
+   "lane": "tl",
+   "col": 13,
+   "row": 1
+  },
+  {
+   "id": "huydon",
+   "lane": "chu",
+   "col": 11,
+   "label": "Hủy đơn (Đã hủy); lô đã thu gắn đơn khác hoặc xử lý khác"
+  },
+  {
+   "id": "e3",
+   "lane": "chu",
+   "col": 11,
+   "kind": "end",
+   "row": 1
+  }
+ ],
+ "edges": [
+  {
+   "from": "s",
+   "to": "ycm"
+  },
+  {
+   "from": "ycm",
+   "to": "luuyc"
+  },
+  {
+   "from": "luuyc",
+   "to": "xet"
+  },
+  {
+   "from": "xet",
+   "to": "tuchoi",
+   "label": "Từ chối",
+   "exit": "bottom",
+   "entry": "top",
+   "label_pos": -0.8
+  },
+  {
+   "from": "tuchoi",
+   "to": "e1"
+  },
+  {
+   "from": "xet",
+   "to": "gui",
+   "label": "Nhận / đề nghị đổi, chọn khu",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "@gui",
+     "@xet"
+    ]
+   ]
+  },
+  {
+   "from": "gui",
+   "to": "chot",
+   "exit": "right",
+   "entry": "left",
+   "via": [
+    [
+     "g3",
+     "@gui"
+    ],
+    [
+     "g3",
+     "@chot"
+    ]
+   ]
+  },
+  {
+   "from": "chot",
+   "to": "huy",
+   "label": "Không",
+   "exit": "bottom",
+   "entry": "top",
+   "label_pos": -0.75
+  },
+  {
+   "from": "huy",
+   "to": "e2"
+  },
+  {
+   "from": "chot",
+   "to": "xn",
+   "label": "Có",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "@xn",
+     "@chot"
+    ]
+   ],
+   "label_pos": -0.85
+  },
+  {
+   "from": "xn",
+   "to": "kh"
+  },
+  {
+   "from": "kh",
+   "to": "luukh"
+  },
+  {
+   "from": "luukh",
+   "to": "thu",
+   "exit": "right",
+   "entry": "bottom",
+   "via": [
+    [
+     "@thu",
+     "@luukh"
+    ]
+   ]
+  },
+  {
+   "from": "thu",
+   "to": "ghithu"
+  },
+  {
+   "from": "ghithu",
+   "to": "du"
+  },
+  {
+   "from": "du",
+   "to": "bt",
+   "label": "Chưa",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "@bt",
+     "@du"
+    ]
+   ]
+  },
+  {
+   "from": "bt",
+   "to": "gtl",
+   "exit": "right",
+   "entry": "left",
+   "via": [
+    [
+     "g9",
+     "@bt"
+    ],
+    [
+     "g9",
+     "@gtl"
+    ]
+   ]
+  },
+  {
+   "from": "gtl",
+   "to": "guitl"
+  },
+  {
+   "from": "guitl",
+   "to": "tlg"
+  },
+  {
+   "from": "tlg",
+   "to": "thu",
+   "label": "Thu tiếp hôm sau",
+   "exit": "top",
+   "entry": "left",
+   "via": [
+    [
+     "@tlg",
+     "tl:top3"
+    ],
+    [
+     "g6",
+     "tl:top3"
+    ],
+    [
+     "g6",
+     "@thu"
+    ]
+   ],
+   "label_pos": -0.93
+  },
+  {
+   "from": "tlg",
+   "to": "capnhat",
+   "label": "Mua số đã thu",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "capnhat",
+   "to": "cho"
+  },
+  {
+   "from": "du",
+   "to": "cho",
+   "label": "Đủ",
+   "exit": "bottom",
+   "entry": "bottom",
+   "via": [
+    [
+     "@du",
+     "sys:bot1"
+    ],
+    [
+     "@cho",
+     "sys:bot1"
+    ]
+   ],
+   "label_pos": -0.6
+  },
+  {
+   "from": "cho",
+   "to": "baocang"
+  },
+  {
+   "from": "baocang",
+   "to": "bcsys"
+  },
+  {
+   "from": "bcsys",
+   "to": "xnra",
+   "exit": "right",
+   "entry": "left",
+   "via": [
+    [
+     "g13",
+     "@bcsys"
+    ],
+    [
+     "g13",
+     "@xnra"
+    ]
+   ]
+  },
+  {
+   "from": "xnra",
+   "to": "e",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "tlg",
+   "to": "huydon",
+   "label": "Bỏ đơn",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "@huydon",
+     "@tlg"
+    ]
+   ],
+   "label_pos": -0.6
+  },
+  {
+   "from": "huydon",
+   "to": "e3",
+   "exit": "bottom",
+   "entry": "top"
+  }
+ ]
+}

@@ -1,0 +1,341 @@
+{
+ "id": "BF-02b",
+ "style": "uml",
+ "heading": "2.2 Ươm, thả giống và nuôi — Chủ HTX tự phụ trách (BF-02b)",
+ "title": "Swimlane Diagram — BF-02b: Ươm, thả giống và nuôi (Chủ HTX tự phụ trách)",
+ "trigger": "Lô giống đã về vùng do Chủ HTX trực tiếp quản lý và bè không còn chu kỳ nuôi chưa đóng.",
+ "end_condition": "Hàu trên bè đủ 8–10 tháng, sẵn sàng cho đơn hàng và thu hoạch.",
+ "lanes": [
+  {
+   "id": "pt",
+   "label": "Chủ HTX",
+   "kind": "actor"
+  },
+  {
+   "id": "nv",
+   "label": "Nhân viên",
+   "kind": "actor"
+  },
+  {
+   "id": "sys",
+   "label": "Hệ thống OMTS",
+   "kind": "system"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "s",
+   "kind": "start",
+   "lane": "pt",
+   "col": 0
+  },
+  {
+   "id": "mo",
+   "lane": "pt",
+   "col": 0,
+   "label": "Mở chu kỳ nuôi trên bè",
+   "row": 1
+  },
+  {
+   "id": "tao",
+   "lane": "sys",
+   "col": 0,
+   "label": "Tạo chu kỳ; trạng thái = Đang mở"
+  },
+  {
+   "id": "treo",
+   "lane": "nv",
+   "col": 1,
+   "label": "Treo giống lên bè ươm (~15 ngày), thả theo lối"
+  },
+  {
+   "id": "ghitha",
+   "lane": "pt",
+   "col": 2,
+   "label": "Ghi buổi thả: lối, đoạn đã thả, lô giống"
+  },
+  {
+   "id": "luutha",
+   "lane": "sys",
+   "col": 2,
+   "label": "Lưu buổi thả; cập nhật sơ đồ bè"
+  },
+  {
+   "id": "nk",
+   "lane": "pt",
+   "col": 3,
+   "label": "Ghi nhật ký; chụp máy đo pH, độ mặn"
+  },
+  {
+   "id": "sonuoc",
+   "lane": "sys",
+   "col": 3,
+   "label": "Lưu chỉ số nước; vượt ngưỡng thì cảnh báo Chủ HTX"
+  },
+  {
+   "id": "hau",
+   "kind": "decision",
+   "lane": "pt",
+   "col": 4,
+   "label": "Hàu chết, đoạn lối hỏng?"
+  },
+  {
+   "id": "loai",
+   "lane": "pt",
+   "row": 1,
+   "col": 4,
+   "label": "Ghi đoạn lối loại bỏ, kèm ảnh"
+  },
+  {
+   "id": "luuloai",
+   "lane": "sys",
+   "col": 4,
+   "label": "Lưu đoạn lối đã loại bỏ"
+  },
+  {
+   "id": "phao",
+   "kind": "decision",
+   "lane": "pt",
+   "col": 5,
+   "label": "Phao, dây hỏng?",
+   "size": [
+    120,
+    90
+   ]
+  },
+  {
+   "id": "thay",
+   "lane": "nv",
+   "col": 6,
+   "label": "Thay phao, dây hỏng"
+  },
+  {
+   "id": "vattu",
+   "lane": "pt",
+   "col": 7,
+   "label": "Ghi phiếu vật tư thay thế"
+  },
+  {
+   "id": "luuvt",
+   "lane": "sys",
+   "col": 7,
+   "label": "Tính thành tiền; lưu phiếu vật tư"
+  },
+  {
+   "id": "tiendo",
+   "lane": "sys",
+   "col": 8,
+   "label": "Tổng hợp tiến độ chu kỳ trên sơ đồ bè"
+  },
+  {
+   "id": "du",
+   "kind": "decision",
+   "lane": "pt",
+   "col": 9,
+   "label": "Đủ 8–10 tháng?"
+  },
+  {
+   "id": "thu",
+   "lane": "nv",
+   "col": 9,
+   "label": "Thu hoạch theo đơn đã chốt"
+  },
+  {
+   "id": "het",
+   "lane": "pt",
+   "col": 10,
+   "kind": "decision",
+   "label": "Mọi đoạn lối đã thu hoặc loại bỏ?"
+  },
+  {
+   "id": "dong",
+   "lane": "pt",
+   "col": 11,
+   "label": "Đóng chu kỳ"
+  },
+  {
+   "id": "luudong",
+   "lane": "sys",
+   "col": 11,
+   "label": "Chu kỳ = Đã đóng; bè mở được chu kỳ mới"
+  },
+  {
+   "id": "e",
+   "lane": "sys",
+   "col": 11,
+   "kind": "end",
+   "row": 1
+  }
+ ],
+ "edges": [
+  {
+   "from": "s",
+   "to": "mo"
+  },
+  {
+   "from": "mo",
+   "to": "tao"
+  },
+  {
+   "from": "tao",
+   "to": "treo"
+  },
+  {
+   "from": "treo",
+   "to": "ghitha"
+  },
+  {
+   "from": "ghitha",
+   "to": "luutha"
+  },
+  {
+   "from": "luutha",
+   "to": "nk"
+  },
+  {
+   "from": "nk",
+   "to": "sonuoc"
+  },
+  {
+   "from": "sonuoc",
+   "to": "hau"
+  },
+  {
+   "from": "hau",
+   "to": "loai",
+   "label": "Có",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "loai",
+   "to": "luuloai"
+  },
+  {
+   "from": "hau",
+   "to": "phao",
+   "label": "Không"
+  },
+  {
+   "from": "luuloai",
+   "to": "phao",
+   "exit": "right",
+   "entry": "bottom",
+   "via": [
+    [
+     "@phao",
+     "@luuloai"
+    ]
+   ]
+  },
+  {
+   "from": "phao",
+   "to": "thay",
+   "label": "Có",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "@thay",
+     "@phao"
+    ]
+   ]
+  },
+  {
+   "from": "thay",
+   "to": "vattu"
+  },
+  {
+   "from": "vattu",
+   "to": "luuvt"
+  },
+  {
+   "from": "luuvt",
+   "to": "tiendo"
+  },
+  {
+   "from": "phao",
+   "to": "tiendo",
+   "label": "Không",
+   "exit": "top",
+   "entry": "top",
+   "via": [
+    [
+     "@phao",
+     "pt:top3"
+    ],
+    [
+     "@tiendo",
+     "pt:top3"
+    ]
+   ],
+   "label_pos": -0.93
+  },
+  {
+   "from": "tiendo",
+   "to": "du"
+  },
+  {
+   "from": "du",
+   "to": "nk",
+   "label": "Chưa",
+   "exit": "top",
+   "entry": "top",
+   "via": [
+    [
+     "@du",
+     "pt:top1"
+    ],
+    [
+     "@nk",
+     "pt:top1"
+    ]
+   ],
+   "label_pos": -0.92
+  },
+  {
+   "from": "du",
+   "to": "thu",
+   "label": "Đủ, có đơn",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "thu",
+   "to": "het"
+  },
+  {
+   "from": "het",
+   "to": "dong",
+   "label": "Có"
+  },
+  {
+   "from": "dong",
+   "to": "luudong"
+  },
+  {
+   "from": "luudong",
+   "to": "e",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "het",
+   "to": "nk",
+   "label": "Chưa",
+   "exit": "top",
+   "entry": "top",
+   "via": [
+    [
+     "@het",
+     "pt:top1"
+    ],
+    [
+     "@nk",
+     "pt:top1"
+    ]
+   ],
+   "label_pos": -0.93
+  }
+ ]
+}

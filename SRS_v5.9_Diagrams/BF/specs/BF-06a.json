@@ -1,0 +1,377 @@
+{
+ "id": "BF-06a",
+ "style": "uml",
+ "heading": "2.6 Lao động và tiền công — Quản lý khu phụ trách (BF-06a)",
+ "title": "Swimlane Diagram — BF-06a: Lao động và tiền công (Quản lý khu phụ trách)",
+ "trigger": "Quản lý khu cần thuê lao động thời vụ cho một đợt việc, hoặc đến kỳ trả lương nhân viên chính thức.",
+ "end_condition": "Khoản chi đã được ghi, quyết toán ở trạng thái Đã chi đủ; nhân viên xem được việc, chấm công và lương của mình.",
+ "lanes": [
+  {
+   "id": "pt",
+   "label": "Quản lý khu",
+   "kind": "actor"
+  },
+  {
+   "id": "nnk",
+   "label": "Người nhận khoán",
+   "kind": "actor"
+  },
+  {
+   "id": "kt",
+   "label": "Kế toán",
+   "kind": "actor"
+  },
+  {
+   "id": "chu",
+   "label": "Chủ HTX",
+   "kind": "actor"
+  },
+  {
+   "id": "sys",
+   "label": "Hệ thống OMTS",
+   "kind": "system"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "s",
+   "kind": "start",
+   "lane": "pt",
+   "col": 0
+  },
+  {
+   "id": "loai",
+   "kind": "decision",
+   "lane": "pt",
+   "col": 1,
+   "label": "Loại lao động?"
+  },
+  {
+   "id": "dongia",
+   "lane": "chu",
+   "col": 1,
+   "label": "Đặt và duyệt đơn giá công nhật"
+  },
+  {
+   "id": "luudg",
+   "lane": "sys",
+   "col": 1,
+   "label": "Lưu đơn giá; trạng thái = Đã duyệt"
+  },
+  {
+   "id": "baonnk",
+   "lane": "pt",
+   "col": 2,
+   "label": "Báo người nhận khoán đơn giá công nhật"
+  },
+  {
+   "id": "tn",
+   "lane": "nnk",
+   "col": 2,
+   "label": "Thống nhất đơn giá, huy động người làm"
+  },
+  {
+   "id": "ds",
+   "lane": "pt",
+   "col": 3,
+   "label": "Ghi danh sách lao động, người nhận khoán"
+  },
+  {
+   "id": "luuds",
+   "lane": "sys",
+   "col": 3,
+   "label": "Kiểm tra trùng người; lưu danh sách"
+  },
+  {
+   "id": "hinh",
+   "kind": "decision",
+   "lane": "pt",
+   "col": 4,
+   "label": "Hình thức tính công?",
+   "size": [
+    160,
+    90
+   ]
+  },
+  {
+   "id": "cham",
+   "lane": "pt",
+   "col": 6,
+   "label": "Chấm công từng người: cả ngày / nửa ngày"
+  },
+  {
+   "id": "giao",
+   "lane": "pt",
+   "row": 1,
+   "col": 4,
+   "label": "Giao khoán việc: mô tả, số tiền khoán"
+  },
+  {
+   "id": "nt",
+   "lane": "pt",
+   "row": 1,
+   "col": 5,
+   "label": "Nghiệm thu việc khoán cùng người nhận khoán"
+  },
+  {
+   "id": "xnnt",
+   "lane": "nnk",
+   "col": 6,
+   "label": "Xác nhận kết quả nghiệm thu"
+  },
+  {
+   "id": "luucc",
+   "lane": "sys",
+   "col": 7,
+   "label": "Lưu phân công, chấm công, nghiệm thu"
+  },
+  {
+   "id": "lap",
+   "lane": "kt",
+   "col": 8,
+   "label": "Lập bảng công, bảng lương nháp"
+  },
+  {
+   "id": "baochu",
+   "lane": "sys",
+   "col": 8,
+   "label": "Lưu bảng nháp; báo Chủ HTX"
+  },
+  {
+   "id": "duyet",
+   "lane": "chu",
+   "col": 9,
+   "label": "Rà, sửa và duyệt bảng"
+  },
+  {
+   "id": "luuduyet",
+   "lane": "sys",
+   "col": 9,
+   "label": "Quyết toán = Đã duyệt"
+  },
+  {
+   "id": "tv",
+   "kind": "decision",
+   "lane": "sys",
+   "col": 10,
+   "label": "Trả qua người nhận khoán?",
+   "size": [
+    160,
+    96
+   ]
+  },
+  {
+   "id": "baoso",
+   "lane": "chu",
+   "col": 10,
+   "label": "Báo người nhận khoán số công, số tiền"
+  },
+  {
+   "id": "xnso",
+   "lane": "nnk",
+   "col": 10,
+   "label": "Xác nhận số công, số tiền"
+  },
+  {
+   "id": "chi",
+   "lane": "chu",
+   "col": 11,
+   "label": "Chi tiền công, lương; ghi chi trả kèm chứng từ"
+  },
+  {
+   "id": "luuchi",
+   "lane": "sys",
+   "col": 12,
+   "label": "Lưu khoản chi; quyết toán = Đã chi đủ; nhân viên xem được lương"
+  },
+  {
+   "id": "e",
+   "kind": "end",
+   "lane": "sys",
+   "col": 12,
+   "row": 1
+  },
+  {
+   "id": "dat",
+   "lane": "pt",
+   "col": 6,
+   "kind": "decision",
+   "row": 1,
+   "label": "Kết quả đạt?"
+  }
+ ],
+ "edges": [
+  {
+   "from": "s",
+   "to": "loai"
+  },
+  {
+   "from": "loai",
+   "to": "dongia",
+   "label": "Thời vụ",
+   "exit": "bottom",
+   "entry": "top",
+   "label_pos": -0.8
+  },
+  {
+   "from": "dongia",
+   "to": "luudg"
+  },
+  {
+   "from": "luudg",
+   "to": "baonnk"
+  },
+  {
+   "from": "baonnk",
+   "to": "tn"
+  },
+  {
+   "from": "tn",
+   "to": "ds"
+  },
+  {
+   "from": "ds",
+   "to": "luuds"
+  },
+  {
+   "from": "luuds",
+   "to": "hinh"
+  },
+  {
+   "from": "hinh",
+   "to": "cham",
+   "label": "Công nhật"
+  },
+  {
+   "from": "hinh",
+   "to": "giao",
+   "label": "Khoán việc",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "giao",
+   "to": "nt"
+  },
+  {
+   "from": "cham",
+   "to": "luucc",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "c7",
+     "@cham"
+    ]
+   ]
+  },
+  {
+   "from": "xnnt",
+   "to": "luucc"
+  },
+  {
+   "from": "loai",
+   "to": "lap",
+   "label": "Chính thức (lương tháng)",
+   "exit": "top",
+   "entry": "top",
+   "via": [
+    [
+     "@loai",
+     "pt:top3"
+    ],
+    [
+     "@lap",
+     "pt:top3"
+    ]
+   ],
+   "label_pos": -0.8
+  },
+  {
+   "from": "luucc",
+   "to": "lap"
+  },
+  {
+   "from": "lap",
+   "to": "baochu"
+  },
+  {
+   "from": "baochu",
+   "to": "duyet"
+  },
+  {
+   "from": "duyet",
+   "to": "luuduyet"
+  },
+  {
+   "from": "luuduyet",
+   "to": "tv"
+  },
+  {
+   "from": "tv",
+   "to": "baoso",
+   "label": "Có",
+   "exit": "top",
+   "entry": "bottom"
+  },
+  {
+   "from": "baoso",
+   "to": "xnso"
+  },
+  {
+   "from": "xnso",
+   "to": "chi"
+  },
+  {
+   "from": "tv",
+   "to": "chi",
+   "label": "Không",
+   "exit": "right",
+   "entry": "bottom",
+   "via": [
+    [
+     "c11",
+     "@tv"
+    ]
+   ]
+  },
+  {
+   "from": "chi",
+   "to": "luuchi"
+  },
+  {
+   "from": "luuchi",
+   "to": "e",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "nt",
+   "to": "dat"
+  },
+  {
+   "from": "dat",
+   "to": "xnnt",
+   "label": "Đạt",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "dat",
+   "to": "nt",
+   "label": "Không đạt, làm lại",
+   "exit": "top",
+   "entry": "top",
+   "via": [
+    [
+     "@dat",
+     "pt:mid1"
+    ],
+    [
+     "@nt",
+     "pt:mid1"
+    ]
+   ]
+  }
+ ]
+}

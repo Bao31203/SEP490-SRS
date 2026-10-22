@@ -1,0 +1,249 @@
+{
+ "id": "BF-01a",
+ "style": "uml",
+ "heading": "2.1 Mua giống — Quản lý khu lo liệu (BF-01a)",
+ "title": "Swimlane Diagram — BF-01a: Mua giống (Quản lý khu lo liệu)",
+ "trigger": "Quản lý khu thấy vùng cần giống mới cho chu kỳ nuôi tiếp theo.",
+ "end_condition": "Lô giống đã được ghi nhận trong hệ thống và nhà cung cấp xác nhận đã nhận tiền; hoặc đề xuất không được Chủ HTX duyệt.",
+ "lanes": [
+  {
+   "id": "qlk",
+   "label": "Quản lý khu",
+   "kind": "actor"
+  },
+  {
+   "id": "chu",
+   "label": "Chủ HTX",
+   "kind": "actor"
+  },
+  {
+   "id": "sys",
+   "label": "Hệ thống OMTS",
+   "kind": "system"
+  },
+  {
+   "id": "ncc",
+   "label": "Nhà cung cấp giống",
+   "kind": "actor"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "s",
+   "kind": "start",
+   "lane": "qlk",
+   "col": 0
+  },
+  {
+   "id": "dx",
+   "lane": "qlk",
+   "col": 1,
+   "label": "Lập đề xuất mua giống: số mảnh, nhà cung cấp, giá/mảnh"
+  },
+  {
+   "id": "luudx",
+   "lane": "sys",
+   "col": 1,
+   "label": "Lưu đề xuất; báo Chủ HTX"
+  },
+  {
+   "id": "duyet",
+   "kind": "decision",
+   "lane": "chu",
+   "col": 2,
+   "label": "Duyệt đề xuất?"
+  },
+  {
+   "id": "kbao",
+   "lane": "sys",
+   "col": 2,
+   "label": "Báo quản lý khu: đề xuất không được duyệt"
+  },
+  {
+   "id": "e1",
+   "kind": "end",
+   "lane": "sys",
+   "row": 1,
+   "col": 2
+  },
+  {
+   "id": "okbao",
+   "lane": "sys",
+   "col": 3,
+   "label": "Báo quản lý khu: đề xuất đã duyệt"
+  },
+  {
+   "id": "dat",
+   "lane": "qlk",
+   "col": 4,
+   "label": "Liên hệ nhà cung cấp đặt giống: số mảnh, giá, ngày và nơi giao"
+  },
+  {
+   "id": "xndon",
+   "kind": "decision",
+   "lane": "ncc",
+   "col": 4,
+   "label": "Xác nhận đơn giống?",
+   "size": [
+    130,
+    90
+   ]
+  },
+  {
+   "id": "giao",
+   "lane": "ncc",
+   "col": 5,
+   "label": "Giao giống tới nơi đã hẹn"
+  },
+  {
+   "id": "dem",
+   "lane": "qlk",
+   "col": 6,
+   "label": "Đếm số mảnh thực nhận, ghi biên nhận"
+  },
+  {
+   "id": "xnsm",
+   "lane": "ncc",
+   "col": 6,
+   "label": "Xác nhận số mảnh thực nhận, ký biên nhận"
+  },
+  {
+   "id": "ghilo",
+   "lane": "qlk",
+   "col": 7,
+   "label": "Ghi lô giống: nhà cung cấp, số mảnh, ảnh biên nhận"
+  },
+  {
+   "id": "luulo",
+   "lane": "sys",
+   "col": 7,
+   "label": "Tạo mã lô giống, lưu lô; báo Chủ HTX"
+  },
+  {
+   "id": "tra",
+   "lane": "chu",
+   "col": 8,
+   "label": "Trả tiền giống cho nhà cung cấp"
+  },
+  {
+   "id": "xntien",
+   "lane": "ncc",
+   "col": 8,
+   "label": "Xác nhận đã nhận tiền"
+  },
+  {
+   "id": "e",
+   "kind": "end",
+   "lane": "ncc",
+   "col": 8,
+   "row": 1
+  }
+ ],
+ "edges": [
+  {
+   "from": "s",
+   "to": "dx"
+  },
+  {
+   "from": "dx",
+   "to": "luudx"
+  },
+  {
+   "from": "luudx",
+   "to": "duyet"
+  },
+  {
+   "from": "duyet",
+   "to": "kbao",
+   "label": "Không",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "kbao",
+   "to": "e1"
+  },
+  {
+   "from": "duyet",
+   "to": "okbao",
+   "label": "Có",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "c3",
+     "@duyet"
+    ]
+   ]
+  },
+  {
+   "from": "okbao",
+   "to": "dat"
+  },
+  {
+   "from": "dat",
+   "to": "xndon"
+  },
+  {
+   "from": "xndon",
+   "to": "dx",
+   "label": "Không, chọn nhà cung cấp khác",
+   "exit": "bottom",
+   "entry": "top",
+   "via": [
+    [
+     "@xndon",
+     "ncc:mid1"
+    ],
+    [
+     90,
+     "ncc:mid1"
+    ],
+    [
+     90,
+     "qlk:top3"
+    ],
+    [
+     "@dx",
+     "qlk:top3"
+    ]
+   ],
+   "label_pos": -0.85
+  },
+  {
+   "from": "xndon",
+   "to": "giao",
+   "label": "Có"
+  },
+  {
+   "from": "giao",
+   "to": "dem"
+  },
+  {
+   "from": "dem",
+   "to": "xnsm"
+  },
+  {
+   "from": "xnsm",
+   "to": "ghilo"
+  },
+  {
+   "from": "ghilo",
+   "to": "luulo"
+  },
+  {
+   "from": "luulo",
+   "to": "tra"
+  },
+  {
+   "from": "tra",
+   "to": "xntien"
+  },
+  {
+   "from": "xntien",
+   "to": "e",
+   "exit": "bottom",
+   "entry": "top"
+  }
+ ]
+}

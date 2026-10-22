@@ -1,0 +1,558 @@
+{
+ "id": "BF-05a",
+ "style": "uml",
+ "heading": "2.5 Giảm giá và trả hàng — Quản lý khu phụ trách (BF-05a)",
+ "title": "Swimlane Diagram — BF-05a: Giảm giá và trả hàng (Quản lý khu phụ trách)",
+ "trigger": "Thương lái phát hiện vấn đề chất lượng với hàng đã nhận và gửi yêu cầu giảm giá hoặc trả hàng (trả hàng: trong 24 giờ kể từ lúc chốt bán, trả toàn bộ đơn).",
+ "end_condition": "Thương lái xác nhận số đã trừ, đã hoàn và còn nợ; hàng trả đã được gắn vào đơn mới hoặc đã tiêu hủy.",
+ "lanes": [
+  {
+   "id": "tl",
+   "label": "Thương lái",
+   "kind": "actor"
+  },
+  {
+   "id": "pt",
+   "label": "Quản lý khu",
+   "kind": "actor"
+  },
+  {
+   "id": "chu",
+   "label": "Chủ HTX",
+   "kind": "actor"
+  },
+  {
+   "id": "kt",
+   "label": "Kế toán",
+   "kind": "actor"
+  },
+  {
+   "id": "sys",
+   "label": "Hệ thống OMTS",
+   "kind": "system"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "s",
+   "lane": "tl",
+   "col": 0,
+   "kind": "start"
+  },
+  {
+   "id": "gui",
+   "lane": "tl",
+   "col": 0,
+   "row": 1,
+   "label": "Gửi yêu cầu giảm giá, hoặc trả hàng trong 24 giờ, kèm bằng chứng"
+  },
+  {
+   "id": "luu",
+   "lane": "sys",
+   "col": 0,
+   "label": "Lưu yêu cầu; trạng thái = Chờ quyết định; báo Chủ HTX"
+  },
+  {
+   "id": "cach",
+   "lane": "chu",
+   "col": 1,
+   "kind": "decision",
+   "label": "Cách xử lý?"
+  },
+  {
+   "id": "tuchoi",
+   "lane": "sys",
+   "col": 1,
+   "label": "Lưu lý do; yêu cầu = Đã đóng"
+  },
+  {
+   "id": "e_tc",
+   "lane": "sys",
+   "col": 1,
+   "kind": "end",
+   "row": 1
+  },
+  {
+   "id": "giam",
+   "lane": "chu",
+   "col": 2,
+   "label": "Lập và duyệt khoản giảm (số tiền hoặc %)"
+  },
+  {
+   "id": "gd",
+   "lane": "sys",
+   "col": 2,
+   "label": "Điều chỉnh = Đã duyệt; gửi chứng từ qua Zalo OA / SMS"
+  },
+  {
+   "id": "nhantra",
+   "lane": "sys",
+   "col": 2,
+   "row": 1,
+   "label": "Đơn = Đã chấp nhận trả; báo thương lái qua Zalo OA / email / SMS"
+  },
+  {
+   "id": "xngiam",
+   "lane": "tl",
+   "col": 3,
+   "label": "Xác nhận khoản giảm"
+  },
+  {
+   "id": "tralai",
+   "lane": "tl",
+   "col": 4,
+   "row": 1,
+   "label": "Trả lại toàn bộ đơn hàng"
+  },
+  {
+   "id": "ghitra",
+   "lane": "pt",
+   "col": 4,
+   "label": "Ghi hàng trả thực nhận, nơi giữ tạm"
+  },
+  {
+   "id": "dnt",
+   "lane": "sys",
+   "col": 4,
+   "label": "Đơn = Đã nhận hàng trả; báo Chủ HTX"
+  },
+  {
+   "id": "fork",
+   "lane": "chu",
+   "col": 5,
+   "kind": "fork"
+  },
+  {
+   "id": "tien",
+   "lane": "chu",
+   "col": 6,
+   "label": "Ghi số tiền trừ nợ, hoàn cho hàng trả"
+  },
+  {
+   "id": "datra",
+   "lane": "kt",
+   "col": 7,
+   "kind": "decision",
+   "label": "Thương lái đã trả tiền?",
+   "size": [
+    130,
+    90
+   ]
+  },
+  {
+   "id": "hoan",
+   "lane": "kt",
+   "col": 8,
+   "label": "Trừ nợ còn lại, hoàn phần đã trả dư; ghi tiền hoàn"
+  },
+  {
+   "id": "guict",
+   "lane": "sys",
+   "col": 8,
+   "label": "Cập nhật công nợ; gửi chứng từ qua Zalo OA / SMS"
+  },
+  {
+   "id": "xn",
+   "lane": "tl",
+   "col": 9,
+   "row": 1,
+   "label": "Xác nhận số đã trừ, đã hoàn, còn nợ"
+  },
+  {
+   "id": "ff_tien",
+   "lane": "tl",
+   "col": 9,
+   "kind": "flowfinal"
+  },
+  {
+   "id": "danhgia",
+   "lane": "chu",
+   "col": 10,
+   "label": "Đánh giá phần bán lại được, đặt thời gian giữ"
+  },
+  {
+   "id": "giu",
+   "lane": "sys",
+   "col": 10,
+   "label": "Lưu đánh giá và thời gian giữ"
+  },
+  {
+   "id": "con",
+   "lane": "chu",
+   "col": 11,
+   "kind": "decision",
+   "label": "Còn bán lại được?"
+  },
+  {
+   "id": "huyall1",
+   "lane": "pt",
+   "col": 11,
+   "row": 1,
+   "label": "Tiêu hủy toàn bộ hàng trả, ghi tiêu hủy"
+  },
+  {
+   "id": "ff1",
+   "lane": "pt",
+   "col": 11,
+   "kind": "flowfinal"
+  },
+  {
+   "id": "huy1",
+   "lane": "pt",
+   "col": 12,
+   "row": 1,
+   "label": "Tiêu hủy phần không bán lại được, ghi tiêu hủy"
+  },
+  {
+   "id": "donmoi",
+   "lane": "sys",
+   "col": 12,
+   "kind": "decision",
+   "row": 1,
+   "label": "Có đơn mới trong thời gian giữ?"
+  },
+  {
+   "id": "banlai",
+   "lane": "chu",
+   "col": 13,
+   "label": "Gắn hàng trả vào đơn mới, xác nhận đơn (không thu hoạch)"
+  },
+  {
+   "id": "can",
+   "lane": "pt",
+   "col": 13,
+   "row": 1,
+   "label": "Cân lại tại cảng bằng QR cũ, bàn giao"
+  },
+  {
+   "id": "ff_ban",
+   "lane": "pt",
+   "col": 13,
+   "kind": "flowfinal"
+  },
+  {
+   "id": "nhac",
+   "lane": "sys",
+   "col": 14,
+   "row": 1,
+   "label": "Hết thời gian giữ: nhắc Chủ HTX"
+  },
+  {
+   "id": "huyall2",
+   "lane": "pt",
+   "col": 14,
+   "row": 1,
+   "label": "Tiêu hủy hàng hết thời gian giữ, ghi tiêu hủy"
+  },
+  {
+   "id": "ff2",
+   "lane": "pt",
+   "col": 14,
+   "kind": "flowfinal"
+  }
+ ],
+ "edges": [
+  {
+   "from": "s",
+   "to": "gui"
+  },
+  {
+   "from": "gui",
+   "to": "luu"
+  },
+  {
+   "from": "luu",
+   "to": "cach"
+  },
+  {
+   "from": "cach",
+   "to": "tuchoi",
+   "label": "Từ chối",
+   "exit": "bottom",
+   "entry": "top",
+   "label_pos": -0.8
+  },
+  {
+   "from": "tuchoi",
+   "to": "e_tc"
+  },
+  {
+   "from": "cach",
+   "to": "giam",
+   "label": "Giảm giá",
+   "exit": "top",
+   "entry": "top",
+   "via": [
+    [
+     "@cach",
+     "chu:top3"
+    ],
+    [
+     "@giam",
+     "chu:top3"
+    ]
+   ]
+  },
+  {
+   "from": "cach",
+   "to": "nhantra",
+   "label": "Trả hàng",
+   "exit": "right",
+   "entry": "left",
+   "via": [
+    [
+     "g2",
+     "@cach"
+    ],
+    [
+     "g2",
+     "@nhantra"
+    ]
+   ],
+   "label_pos": -0.65
+  },
+  {
+   "from": "giam",
+   "to": "gd"
+  },
+  {
+   "from": "gd",
+   "to": "xngiam"
+  },
+  {
+   "from": "nhantra",
+   "to": "tralai"
+  },
+  {
+   "from": "tralai",
+   "to": "ghitra"
+  },
+  {
+   "from": "ghitra",
+   "to": "dnt"
+  },
+  {
+   "from": "dnt",
+   "to": "fork",
+   "exit": "right",
+   "entry": "left",
+   "via": [
+    [
+     "g5",
+     "@dnt"
+    ],
+    [
+     "g5",
+     "@fork"
+    ]
+   ]
+  },
+  {
+   "from": "fork",
+   "to": "tien",
+   "exit": "right",
+   "entry": "left"
+  },
+  {
+   "from": "fork",
+   "to": "danhgia",
+   "exit": "bottom",
+   "entry": "left",
+   "via": [
+    [
+     "@fork",
+     "sys:1"
+    ],
+    [
+     "g10",
+     "sys:1"
+    ],
+    [
+     "g10",
+     "@danhgia"
+    ]
+   ]
+  },
+  {
+   "from": "tien",
+   "to": "datra",
+   "exit": "right",
+   "entry": "left",
+   "via": [
+    [
+     "g7",
+     "@tien"
+    ],
+    [
+     "g7",
+     "@datra"
+    ]
+   ]
+  },
+  {
+   "from": "xngiam",
+   "to": "datra",
+   "exit": "right",
+   "entry": "top",
+   "via": [
+    [
+     "@datra",
+     "@xngiam"
+    ]
+   ]
+  },
+  {
+   "from": "datra",
+   "to": "hoan",
+   "label": "Có"
+  },
+  {
+   "from": "datra",
+   "to": "guict",
+   "label": "Chưa",
+   "exit": "bottom",
+   "entry": "left",
+   "via": [
+    [
+     "@datra",
+     "@guict"
+    ]
+   ],
+   "label_pos": -0.73
+  },
+  {
+   "from": "hoan",
+   "to": "guict"
+  },
+  {
+   "from": "guict",
+   "to": "xn",
+   "exit": "right",
+   "entry": "bottom",
+   "via": [
+    [
+     "@xn",
+     "@guict"
+    ]
+   ]
+  },
+  {
+   "from": "xn",
+   "to": "ff_tien",
+   "exit": "top",
+   "entry": "bottom"
+  },
+  {
+   "from": "danhgia",
+   "to": "giu"
+  },
+  {
+   "from": "giu",
+   "to": "con"
+  },
+  {
+   "from": "con",
+   "to": "huyall1",
+   "label": "Không còn",
+   "exit": "top",
+   "entry": "bottom",
+   "label_pos": -0.5
+  },
+  {
+   "from": "huyall1",
+   "to": "ff1",
+   "exit": "top",
+   "entry": "bottom"
+  },
+  {
+   "from": "con",
+   "to": "huy1",
+   "label": "Một phần",
+   "exit": "right",
+   "entry": "left",
+   "via": [
+    [
+     "g12",
+     "@con"
+    ],
+    [
+     "g12",
+     "@huy1"
+    ]
+   ]
+  },
+  {
+   "from": "con",
+   "to": "donmoi",
+   "label": "Toàn bộ",
+   "exit": "bottom",
+   "entry": "left",
+   "via": [
+    [
+     "@con",
+     "@donmoi"
+    ]
+   ]
+  },
+  {
+   "from": "huy1",
+   "to": "donmoi",
+   "exit": "bottom",
+   "entry": "top"
+  },
+  {
+   "from": "donmoi",
+   "to": "banlai",
+   "label": "Có",
+   "exit": "right",
+   "entry": "bottom",
+   "via": [
+    [
+     "@banlai",
+     "@donmoi"
+    ]
+   ]
+  },
+  {
+   "from": "banlai",
+   "to": "can",
+   "exit": "top",
+   "entry": "bottom"
+  },
+  {
+   "from": "can",
+   "to": "ff_ban",
+   "exit": "top",
+   "entry": "bottom"
+  },
+  {
+   "from": "donmoi",
+   "to": "nhac",
+   "label": "Không",
+   "exit": "bottom",
+   "entry": "bottom",
+   "via": [
+    [
+     "@donmoi",
+     "sys:bot1"
+    ],
+    [
+     "@nhac",
+     "sys:bot1"
+    ]
+   ]
+  },
+  {
+   "from": "nhac",
+   "to": "huyall2",
+   "exit": "top",
+   "entry": "bottom"
+  },
+  {
+   "from": "huyall2",
+   "to": "ff2",
+   "exit": "top",
+   "entry": "bottom"
+  }
+ ]
+}
