@@ -1,0 +1,77 @@
+{
+ "SEQ-AUTH-01": {
+  "scale": 1.9,
+  "ok": true,
+  "msg": ""
+ },
+ "SEQ-AUTH-02": {
+  "scale": 1.97,
+  "ok": true,
+  "msg": ""
+ },
+ "SEQ-AUTH-03": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SEQ-COOP-01": {
+  "scale": 1.82,
+  "ok": true,
+  "msg": ""
+ },
+ "SEQ-COOP-02": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SEQ-COOP-03": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "SEQ-COOP-04": {
+  "scale": 1.89,
+  "ok": true,
+  "msg": ""
+ },
+ "CLS-AUTH-APP": {
+  "scale": 1.7,
+  "ok": true,
+  "msg": ""
+ },
+ "CLS-AUTH-DOM": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "CLS-COOP-APP": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "CLS-COOP-DOM": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "CLS-COOP-AUTHZ": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "ARCH": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "PKG": {
+  "scale": 2.0,
+  "ok": true,
+  "msg": ""
+ },
+ "DB-AUTH-COOP": {
+  "scale": 1.67,
+  "ok": true,
+  "msg": ""
+ }
+}
